@@ -56,4 +56,13 @@ public class TriCoordVector extends Vector implements VectorMultipliable<TriCoor
                 this.z * that.x - this.x * that.z, //
                 this.x * that.y - this.y * that.x);
     }
+
+    @Override
+    public String toString() {
+        return "TriCoordVector{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
+    }
 }

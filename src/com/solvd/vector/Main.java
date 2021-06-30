@@ -1,6 +1,7 @@
 package com.solvd.vector;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author asemenkov
@@ -23,6 +24,11 @@ public class Main {
 
         double cos = v1.getCosAngle(v2);
         double scalar = v2.getScalarProduct(v1);
+
+
+        Random randomInt = new Random(0);
+        List<Vector> vectors = VectorFunctionalUtils.generate(10, randomInt::nextInt);
+        vectors.stream().forEach(System.out::println);
     }
 
 }
