@@ -63,6 +63,7 @@ public class TriCoordVector extends Vector implements VectorMultipliable<TriCoor
                 "x=" + x +
                 ", y=" + y +
                 ", z=" + z +
+                ", length = " + getLength() +
                 '}';
     }
 }
