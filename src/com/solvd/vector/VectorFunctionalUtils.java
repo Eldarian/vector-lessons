@@ -31,4 +31,10 @@ public class VectorFunctionalUtils {
                 .sorted(comparator)
                 .collect(Collectors.toList());
     }
+
+    public static List<Long> map(List<Vector> vectors, Function<Vector, Long> mapper) {
+        return vectors.stream()
+                .map(mapper)
+                .collect(Collectors.toList());
+    }
 }

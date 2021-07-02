@@ -3,6 +3,7 @@ package com.solvd.vector;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
 
 /**
  * @author asemenkov
@@ -27,6 +28,7 @@ public class Main {
         double scalar = v2.getScalarProduct(v1);
 
         //Task 1 - Vector generation
+        System.out.println("=====Generation===");
         Random randomInt = new Random(0);
         List<Vector> vectors = VectorFunctionalUtils.generate(10, randomInt::nextInt);
         vectors.stream().forEach(System.out::println);
@@ -34,6 +36,7 @@ public class Main {
         List<Vector> smallVectors = VectorFunctionalUtils.generate(10, 20, randomInt::nextInt);
 
         //Task 2 - Sorting
+        System.out.println("=====Sorting=====");
         Comparator<Vector> vectorComparator = (o1, o2) -> {
                 if(o1.getLength() > o2.getLength()) {
                     return -1;
@@ -42,7 +45,25 @@ public class Main {
                 }
                 return 0;
         };
-        VectorFunctionalUtils.sort(vectors, vectorComparator::compare).forEach(System.out::println);
+        List<Vector> sortedVectors = VectorFunctionalUtils.sort(vectors, vectorComparator::compare);
+        sortedVectors.forEach(System.out::println);
+
+        //Task 3 - Mapping
+        System.out.println("=====Mapping=====");
+        List<Long> lengths = VectorFunctionalUtils.map(sortedVectors, vector -> (long) vector.getLength());
+        lengths.forEach(System.out::println);
+
+        //Task 4 - Streams
+        System.out.println("=====Streams=====");
+        Long sum = lengths.stream()
+                .filter(num -> num%2 == 0)
+                .peek(System.out::println)
+                .reduce(0L, (num1, num2) -> num1 + num2);
+
+        System.out.println("Sum = " + sum);
+        System.out.println("Max = " + Integer.MAX_VALUE);
+        System.out.println(sum > Integer.MAX_VALUE);
+
     }
 
 
